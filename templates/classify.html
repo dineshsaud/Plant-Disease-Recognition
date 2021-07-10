@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<title>Classify</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="{% static 'styles/classify.css' %}">
+<body>
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-wide w3-padding w3-card">
+    <a href="#home" class="w3-bar-item w3-button"><b>PDR</b> Plant Disease Recognization</a>
+    <!-- Float links to the right. Hide them on small screens -->
+    <div class="w3-right w3-hide-small">
+      <a href="#projects" class="w3-bar-item w3-button">Projects</a>
+      <a href="test" class="w3-bar-item w3-button">About</a>
+      <a href="#contact" class="w3-bar-item w3-button">Contact</a>
+    </div>
+  </div>
+</div>
+
+<div class="subbody">
+<div class="container"> 
+
+<!--header-->
+<h2> <span class="diseaseName" > Plant Disease Recognization System  </span> </h2>
+
+<form action="upload" method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  <div class="form-group">
+  {% if pic == null %}
+  <img class="uploadImage" src="../static/images/upload-file-512.png" alt="" name="myImage"> <br>
+  {% else %}
+  <img class="uploadImage" src="{{pic}}" alt="" name="myImage2"> <br>
+  {% endif %}
+
+  <input class="form-control uploadOption"  type="file" name="myImage" placeholder="choose image" accept="image/x-png,image/gif,image/jpeg" /> <br>
+  <button class="uploadButton w3-button " type="submit"> <b>Confirm </b> </button>
+  </div>
+</form>
+
+
+
+
+<form action="predict">
+  {% if output != null %}
+  {{output}}
+  {% endif %}
+</form>
+
+{% if output != null %}
+{{output}}
+{% endif%}
+
+</div> <!--end of container-->
+</div>
+</body>
+</html>

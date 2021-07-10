@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Classify</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/styles/classify1.css">
+
+    <style>
+        nav.navbar {
+            box-shadow: 0px 5px 5px gray;
+        }
+
+        .needhelp img{
+            position: relative;
+            top: -320px;
+            left: 77%;
+        }
+
+    </style>
+    <link rel="icon" href="../static/images/logo.png" type="image/x-icon">
+</head>
+
+<body>
+    {% include 'navbar/navbar.html' %}
+
+    <section>
+        <div class="container p-5">
+            <!-- For demo purpose -->
+            <div class="row mb-5 text-center text-white">
+                <div class="col-lg-10 mx-auto">
+                    <h1 class="display-4"> Plant Disease Recognition System </h1>
+                </div>
+            </div>
+            <!-- End -->
+
+
+            <div class="row">
+                <div class="col-lg-7 mx-auto">
+                    <div class="p-5 bg-white shadow rounded-lg">
+
+                        <!-- Default bootstrap file upload-->
+
+                        <form action="upload" method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="form-group text-center">
+                                <img src="../static/images/uploadImage.png" id="imgPreview" alt="" width="200"
+                                    class="d-block mx-auto mb-4 rounded-pill">
+
+                                <div class="custom-file overflow-hidden rounded-pill mb-5">
+                                    <input id="customFile" class="form-control custom-file-input rounded-pill " type="file"
+                                        name="myImage" placeholder="choose image"
+                                        accept="image/x-png,image/gif,image/jpeg" />
+                                    <br><br><br>
+                                    <button class="btn btn-success rounded-lg shadow px-5" type="submit"> <b>Classify
+                                        </b> </button>
+                                    <label for="customFile" class="custom-file-label rounded-pill">Choose file</label>
+                                </div>
+
+                                {% if output != null %}
+
+                                <br>
+                                <br>
+
+                                <b> Predicted Disease: </b s> {{output}}
+
+                                <br>
+                                <br>
+
+                                <button class="details">
+                                    <a href="getDetails?name={{ output|urlencode }}" class="btn btn-success"
+                                        name="diseaseName"> Get Details </a> </button>
+
+                                {% endif %}
+                            </div>
+
+
+
+                        </form>
+                        <!-- End -->
+
+                        <!-- Custom bootstrap upload file-->
+                        <!-- <label for="fileUpload" class="file-upload btn btn-success btn-block rounded-pill shadow"><i
+                                class="fa fa-upload mr-2"></i>Browse for file ...
+                            <input id="fileUpload" type="file">
+                        </label> -->
+                        <!-- End -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="needhelp">
+            <a class="nav-item nav-link" href="help"><img src="../static/images/need help.png" alt=""></a>
+        </div>
+    </section>
+
+
+</body>
+
+<script>
+
+    function previewFile() {
+        let preview = document.querySelector('#imgPreview');
+        let file = document.querySelector('#customFile');
+        let reader = new FileReader();
+
+        reader.addEventListener("load", function () {
+            preview.src = reader.result;
+        }, false);
+
+        if (file.files.length) {
+            reader.readAsDataURL(file.files[0]);
+        }
+    }
+
+    (function () {
+        let elem = document.getElementById('customFile');
+        if (elem) {
+            elem.onchange = previewFile;
+        }
+    })();
+
+</script>
+
+</html>

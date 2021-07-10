@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+
+    <style>
+    
+    .listHeading{
+        margin-left: 30px;
+    }
+
+    ul{
+        margin-top: 30px;
+    }
+    ul li{
+        margin-top: 5px;
+        padding-left: 100px;
+    }
+    
+    .imgh1{
+        height: 250px;
+        width: 300px;
+        margin-left: 65%;
+            }
+
+    .li1{
+        height: 270px;
+            }
+    
+     .imgh2{
+        margin-left: 100px;
+     }
+
+     .imgh3{
+         margin-left: 160px;
+     }
+
+    </style>
+
+    {% include 'navbar/navbar.html' %}
+    <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded box-shadow">
+        <img class="mr-3" src="../static/images/logo.png" alt="" width="58" height="58">
+        <div class="lh-100">
+          <h5 class="mb-0 text-green lh-100"> Welcome to the instructions page</h5>
+        </div>
+      </div>
+    
+             <div class="lh-100">
+              <h6 class="mb-0 text-green lh-100 listHeading"> Need help? Just follow these steps</h6>
+            </div>
+          
+        
+    <ul class="list-group list-group-flush">
+        <div>
+            <li class="list-group-item li1 d-flex align-items-center" >
+                <div class="lidetail1 mr-3">  Click on "Browse" option in Middle of the page </div>
+                <div> <img src="../static/images/manual1.png" class="rounded float-left imgh1 imgh3 mr-3" alt="..."> </div>
+            </li>
+            <li class="list-group-item li1 d-flex align-items-center" >
+                <div class="lidetail1 mr-3"> Browse the Plant Image you want to identify disease of </div>
+                <div> <img src="../static/images/manual2.png" class="rounded float-left imgh1 imgh2 mr-3" alt="..."  > </div>
+            </li>
+            <li class="list-group-item"> Double click on the image you browsed </li>
+            <li class="list-group-item li1 d-flex align-items-center" >
+                <div class="lidetail1 mr-3"> Click on "Classify" Button. The Green one </div>
+                <div> <img src="../static/images/manual3.png" class="rounded float-left imgh1 mr-3" alt="..."> </div>
+            </li>
+            <li class="list-group-item"> Take a breath for 30 seconds. There are lots of processing going  on</li>
+            <li class="list-group-item li1 d-flex align-items-center" >
+                <div class="lidetail1 mr-3 "> If you wish to see more details. Click on "Get Details" Button </div>
+                <div> <img src="../static/images/manual4.png" class="rounded float-left imgh1 imgh2 mr-3" alt="..."> </div>
+            </li>
+        </div>
+        
+        <li class="list-group-item"> Go back and follow the same steps for more image classification! </li>
+      </ul>
+
+      <footer class="bg-light pb-5">
+        <div class="container text-center">
+          <p class="font-italic text-muted mb-0">&copy; Copyrights PlantDisease.com All rights reserved.</p>
+        </div>
+      </footer>
+</body>
+</html>
